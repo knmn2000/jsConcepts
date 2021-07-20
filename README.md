@@ -3,10 +3,10 @@ Learning and documenting my JS concept tutorials. source->https://www.youtube.co
 
 --- 
 # Code
+---
+- setTimeout + Closures Interview Question 🔥 | Namaste 🙏 JavaScript Ep. 11
+- https://www.youtube.com/watch?v=eBTBG4nda2A&ab_channel=AkshaySaini
 ```javascript
-//setTimeout + Closures Interview Question 🔥 | Namaste 🙏 JavaScript Ep. 11
-//https://www.youtube.com/watch?v=eBTBG4nda2A&ab_channel=AkshaySaini
-
 for (var j = 0; j < 5; j++) {
   setTimeout(function () {
     console.log(j);
