@@ -3,8 +3,7 @@ Learning and documenting my JS concept tutorials. source->https://www.youtube.co
 
 --- 
 # Code
----
-- setTimeout + Closures Interview Question 🔥 | Namaste 🙏 JavaScript Ep. 11
+### setTimeout + Closures Interview Question 🔥 | Namaste 🙏 JavaScript Ep. 11
 - https://www.youtube.com/watch?v=eBTBG4nda2A&ab_channel=AkshaySaini
 ```javascript
 for (var j = 0; j < 5; j++) {
@@ -70,7 +69,7 @@ y();
 
 ```
 ---
-- Hoisting in JavaScript 🔥(variables & functions) | Namaste JavaScript Ep. 3
+### Hoisting in JavaScript 🔥(variables & functions) | Namaste JavaScript Ep. 3
 - https://www.youtube.com/watch?v=Fnlnw8uY6jo&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=4&ab_channel=AkshaySaini
 ```javascript
 //Hoisting in JavaScript 🔥(variables & functions) | Namaste JavaScript Ep. 3
@@ -102,8 +101,8 @@ function getName2() {
 //undefined
 
 getName2();
-// console.log(z);
-// var z = 7;
+console.log(z);
+var z = 7;
 
 function getName3() {
   console.log('brrrr');
@@ -144,7 +143,7 @@ console.log(getName4);
 // ###
 
 console.log(getName5);
-// getName5();
+getName5();
 var getName5 = () => {
   console.log('brbrbbrbrb');
 };

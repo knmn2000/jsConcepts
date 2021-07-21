@@ -27,8 +27,8 @@ function getName2() {
 //undefined
 
 getName2();
-// console.log(z);
-// var z = 7;
+console.log(z);
+var z = 7;
 
 function getName3() {
   console.log('brrrr');
@@ -69,7 +69,7 @@ console.log(getName4);
 // ###
 
 console.log(getName5);
-// getName5();
+getName5();
 var getName5 = () => {
   console.log('brbrbbrbrb');
 };
