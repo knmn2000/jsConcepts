@@ -1,105 +1,60 @@
-//Hoisting in JavaScript 🔥(variables & functions) | Namaste JavaScript Ep. 3
-//https://www.youtube.com/watch?v=Fnlnw8uY6jo&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=4&ab_channel=AkshaySaini
+// How functions work in JS ❤️ & Variable Environment | Namaste JavaScript Ep. 4
+//https://www.youtube.com/watch?v=gSDncyuGw0s&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=5&ab_channel=AkshaySaini
 
-//####
-var x = 7;
-
-function getName() {
-  console.log('brrrr');
-}
-
-getName();
+var x = 1;
+a();
+b();
 console.log(x);
 
-//output
-// brrrr
-// 7
-
-getName2();
-console.log(y);
-var y = 7;
-
-function getName2() {
-  console.log('brrrr');
+function a() {
+  var x = 10;
+  console.log(x);
 }
-//output
-//brrrr
-//undefined
 
-getName2();
-console.log(z);
-var z = 7;
-
-function getName3() {
-  console.log('brrrr');
+function b() {
+  var x = 100;
+  console.log(x);
 }
-//output
-//brrrr
-//uncaught ReferenceError: z is not defined
-// at script.js:30
 
-//not defined vs undefined
-//not defined -> the referred name is not in the memory
-//undefined -> referred name in memory has no value
-//###
-
-console.log(getName4);
-function getName4() {
-  console.log('brrrr');
-}
-console.log(getName4);
-
-//output
-// ƒ getName4() {
-//   console.log('brrrr');
-// }
-// ƒ getName4() {
-//   console.log('brrrr');
-// }
-
-// notice that we were able to
-// console log the function's code
-// before initializing it, but we were not able to
-// console log variables without initializing them
-
-//behind the scenes:
-// before execution, all variables and funcs get memory allocation
-// refer to the "scope" in the devtool debugger.
-
-// ###
-
-console.log(getName5);
-getName5();
-var getName5 = () => {
-  console.log('brbrbbrbrb');
-};
-//output
-// undefined
-// script.js:71 Uncaught TypeError: getName5 is not a function
-//     at script.js:71
-
-// this happened because getName5 was treated as a variable
-//
-
-//unrelated. wrote this to see the devtools callstack
-var i = 0;
-var j = 0;
-function callstacc(j) {
-  i++;
-  j++;
-  if (i < 5) {
-    callstacc(j);
-    console.log(i);
-    console.log(j);
-  }
-}
-callstacc(j);
-//output
-// 5
-// 4
-// 5
-// 3
-// 5
-// 2
-// 5
+// output
+// 10
+// 100
 // 1
+
+/* 
+in the execution context-> memory will be allocated to x, a and b
+x will hold undefined 
+a and b will hold their function code
+
+this global execution context will be pushed to the call stack
+
+in the code, when the function a() is called, an execution context will be made for it
+and this execution context will be stored inside its parent's execution context
+
+it will also have a memory and a codesection, it will also have 
+a variable x with memory allocated to it, and it will hold "undefined" 
+in the beginning. 
+
+this new execution context will be pushed to the callstack
+
+during the execution of a()'s code, its variable x will get its value allocated to it.
+Now, the console log inside function a() will look for the variable x in the 
+local execution context.
+
+after execution of a(), the whole execution context of a() will be deleted, 
+and popped from the callstack. 
+
+now b() will be called. the same steps as above will be followed 
+create execution context within the global execution context ->
+memory will be allocated to x -> value be allocated to x -> x will be console logged 
+-> x will be found in the local exec context -> this execution context will be deleted and 
+popped out of the stack.
+
+finally the console log after the function calls will be executed, 
+it will look for variable x and it will find x in the global execution context
+
+now theres nothing more to execute, so finally the global execution context 
+will be deleted, and be popped out of the call stack
+*/
+
+// // // //
