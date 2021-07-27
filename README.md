@@ -246,7 +246,6 @@ will be deleted, and be popped out of the call stack
 
 ### SHORTEST JS Program 🔥window & this keyword | Namaste JavaScript Ep. 5
 - https://www.youtube.com/watch?v=QCRpVw2KXf8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=6&ab_channel=AkshaySaini
-
 ```javascript
 //https://www.youtube.com/watch?v=QCRpVw2KXf8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=6&ab_channel=AkshaySaini
 //SHORTEST JS Program 🔥window & this keyword | Namaste JavaScript Ep. 5
