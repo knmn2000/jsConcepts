@@ -1,66 +1,86 @@
-//https://www.youtube.com/watch?v=uH-tVP8MUs8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=8&ab_channel=AkshaySaini
-//The Scope Chain, 🔥Scope & Lexical Environment | Namaste JavaScript Ep. 7
+// https://www.youtube.com/watch?v=BNC6slYCj50&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=10&ab_channel=AkshaySaini
+// let & const in JS 🔥Temporal Dead Zone | | Namaste JavaScript Ep. 8
 
-//1
-function a() {
-  // JS will first try to find "b" within the context of this function
-  // upon not finding the var, it will expand its search to the parent context
-  console.log(b);
-}
-var b = 10;
-a();
-//output: 10
+// let and const declarations are hoisted
+// theyre hoisted differently than var
+// let and const are "in the temporal deadzone"
 
-//2
-function cc() {
-  aa();
-  function aa() {
-    // JS will first try to find "b" within the context of this function
-    // upon not finding the var, it will expand its search to the parent context
-    console.log(bb);
-  }
-}
-var bb = 10;
-cc();
-//output: 10
+console.log(b);
+let a = 10;
+var b = 100;
+// output: undefined.
+// because b is undefined
+// but logging "a" will give an error, but that doesnt mean that it was not
+// hoisted
 
-//3
-function ccc() {
-  var bbb = 10;
-  aaa();
-  function aaa() {
-    // JS will first try to find "b" within the context of this function
-    // upon not finding the var, it will expand its search to the parent context
-  }
-}
-ccc();
-// console.log(bbb);
-//output: Uncaught ReferenceError: bbb is not defined
+// look at the browser debugger.
+// intially, both "a" and "b" will be allocated memory
+// but "a" is not in the same place as "b"
+// b is within the global scope, but a is not.
+// we cant access "a" until we assign a value to it.
 
-// bbb was not in the global scope.
+// until we assign a value to "a", it is said that "a" is
+// in a temporal deadzone. this deadzone ends when "a" is assigned a value.
 
-// a global execution context is created on running the program, and put on to the callstack
-// the global space variables and functions will be allocated memory
+// ****
+// NOTE THE DIFFERENCE BETWEEN THE TWO ERRORS
+// console.log(someVariable);
+// Uncaught ReferenceError: Cannot access 'someVariable' before initialization
+// console.log(someVariableThatDoesntExist);
+//Uncaught ReferenceError: someVariableThatDoesntExist is not defined
+// let someVariable = 10;
+// ****
 
-// an execution context for ccc() will be created
-// ccc has aaa and bbb in its scope, so they will be allocated memory in this execution context
+console.log(window.a);
+// undefined
+console.log(window.b);
+// 100
+//this happened because a is not in the same space as window
 
-// another exec context for aaa() will be created
-// if there was anything to allocate memory to, then it would have been allocated
+//****
+// console.log('this console log wont run');
+// let abc = 1;
+// let abc = 2;
+// Uncaught SyntaxError: Identifier 'abc' has already been declared
+// error occured even before let abc=1; was reached
+//****
 
-//wherever an exec context is created, a lexical env is also created
-//LEXICAL ENVIRONMENT - its the local memory along with lexical env of its parent ******
-// what is lexical? : hierarchy, example: aaa() is inside ccc() ie, aaa() is lexically inside ccc()
+//****
+console.log('this console log will run');
+var abc = 1;
+var abc = 2;
+//****
 
-// every execution context has a reference to the lexical env of its parent
-// at the global level, this reference points to null
-// aaa -> ccc -> global -> null
+//****
+// console.log('this console log wont run');
+// const abc = 1;
+// abc = 2;
+// Uncaught SyntaxError: Identifier 'abc' has already been declared
+//****
 
-// if we try to console log bbb inside of aaa, then JS will try to find
-// bbb inside the lexical env of aaa
-// lexical env of aaa = local memory of aaa + lexical env of ccc (its parent)
-// is bbb will be found and logged
+//****
+// console.log('this console log wont run');
+// const xyz;
+// xyz= 2;
+// Uncaught SyntaxError: Missing initializer in const declaration
+//****
 
-// this chaining of references is called the SCOPE CHAIN ******
+//****
+// const bb = 100;
+// bb = 1000;
+// Uncaught TypeError: Assignment to constant variable.
+// type error because bb is of type constant.
+//****
 
-// use the visual debugger to visualize
+// Note the when TypeErrors, SyntaxErrors and ReferenceErrors occur above
+
+// good practices
+/*
+use consts
+if not consts, use let
+dont use var. 
+*/
+
+/*
+push all inits and declarations to the top to avoid the temporal deadzone 
+ */
